@@ -98,7 +98,7 @@ body {
 /* ================= HERO ================= */
 .hero {
     height: 90vh;
-    background: url('images/hero.jpg') center/cover no-repeat;
+    background: url('hero.jpg') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,7 +122,7 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background-image: url('images/confetti.png'); /* optional confetti PNG */
+    background-image: url('confetti.png'); /* optional confetti PNG */
     background-size: cover;
     opacity: 0.15;
     animation: rotateConfetti 20s linear infinite;
@@ -283,3 +283,4 @@ body {
     .nav { margin-top: 10px; }
     .category-card { height: 250px; }
 }
+
