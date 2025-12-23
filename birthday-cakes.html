@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Cakes | New To Kitchen</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    font-family:'Poppins',sans-serif;
+    background:#fff8f2;
+    color:#333;
+}
+
+/* ================= HEADER ================= */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 6%;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(8px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{height:62px;border-radius:50%}
+.brand-text h1{
+    font-family:'Playfair Display',serif;
+    font-size:1.9rem;
+    color:#d2691e;
+}
+.brand-text p{font-size:.8rem;color:#777}
+.nav a{
+    margin-left:30px;
+    text-decoration:none;
+    font-weight:500;
+    color:#333;
+    position:relative;
+}
+.nav a::after{
+    content:'';
+    position:absolute;
+    bottom:-6px;
+    left:0;
+    width:0;
+    height:2px;
+    background:#d2691e;
+    transition:.3s;
+}
+.nav a:hover::after{width:100%}
+
+/* ================= HERO ================= */
+.hero{
+    height:85vh;
+    background:url('images/bg.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    text-align:center;
+}
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg,rgba(255,105,135,.45),rgba(210,105,30,.45));
+}
+.hero-content{
+    position:relative;
+    color:#fff;
+    z-index:2;
+    max-width:750px;
+    animation:fadeUp 1.2s ease;
+}
+.hero-content h2{
+    font-family:'Playfair Display',serif;
+    font-size:3.2rem;
+    margin-bottom:12px;
+    text-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+.hero-content p{font-size:1.2rem}
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(30px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+/* ================= SECTIONS ================= */
+.about,.categories{padding:90px 6%;text-align:center}
+.about h3,.categories h3{
+    font-family:'Playfair Display',serif;
+    font-size:2.4rem;
+    color:#d2691e;
+    margin-bottom:30px;
+}
+.about p{
+    max-width:800px;
+    margin:auto;
+    font-size:1.1rem;
+    line-height:1.9;
+    color:#555;
+}
+
+/* ================= CAKES ================= */
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:35px;
+}
+.cake-card{
+    position:relative;
+    height:340px;
+    border-radius:26px;
+    overflow:hidden;
+    background:rgba(255,255,255,.35);
+    backdrop-filter:blur(10px);
+    transition:.5s;
+}
+.cake-card:hover{
+    transform:translateY(-14px) scale(1.03);
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+}
+.card-bg{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    transition:.6s;
+}
+.cake-card:hover .card-bg{transform:scale(1.15)}
+.cake-card::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.6),transparent);
+}
+.cake-title{
+    position:absolute;
+    bottom:26px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#fff;
+    font-size:1.6rem;
+    font-weight:600;
+    z-index:2;
+}
+
+/* ================= CTA ================= */
+.cta{
+    margin:90px 8%;
+    padding:80px 8%;
+    background:linear-gradient(135deg,#fff1e6,#ffe0e9);
+    border-radius:35px;
+    text-align:center;
+    box-shadow:0 40px 80px rgba(0,0,0,.12);
+}
+.cta h3{
+    font-family:'Playfair Display',serif;
+    font-size:2.3rem;
+    color:#d2691e;
+}
+.cta p{
+    font-size:1.1rem;
+    color:#555;
+    line-height:1.8;
+}
+.btn-hero{
+    margin-top:30px;
+    padding:16px 42px;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff6b81,#d2691e);
+    color:#fff;
+    font-weight:600;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(255,105,135,.4);
+    transition:.4s;
+}
+.btn-hero:hover{transform:scale(1.08)}
+
+/* ================= MODAL ================= */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+}
+.modal-content{
+    background:#fff;
+    width:90%;
+    max-width:420px;
+    padding:30px;
+    border-radius:25px;
+    animation:fadeUp .5s ease;
+}
+.modal-content h4{
+    font-family:'Playfair Display',serif;
+    color:#d2691e;
+    margin-bottom:20px;
+    text-align:center;
+}
+.modal-content input,
+.modal-content select,
+.modal-content textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:14px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    font-family:'Poppins',sans-serif;
+}
+.modal-content textarea{resize:none}
+.modal-actions{
+    display:flex;
+    gap:10px;
+}
+.modal-actions button{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    font-weight:600;
+}
+.send-btn{
+    background:#25D366;
+    color:#fff;
+}
+.close-btn{
+    background:#eee;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+    background:#111;
+    padding:22px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#fff;
+}
+.socials a{
+    margin-left:18px;
+    font-size:1.4rem;
+    text-decoration:none;
+}
+.insta{color:#E1306C}
+.fb{color:#1877F2}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .header{flex-direction:column}
+    .nav{margin-top:10px}
+    .hero-content h2{font-size:2.3rem}
+    .cake-card{height:260px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="brand">
+        <img src="images/logo.jpg" class="logo">
+        <div class="brand-text">
+            <h1>New To Kitchen</h1>
+            <p>The Baking House</p>
+        </div>
+    </div>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="#">Birthday Cakes</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Birthday Cakes</h2>
+        <p>Every celebration deserves a perfect cake 🎂</p>
+    </div>
+</section>
+
+<section class="categories">
+    <h3>Signature Birthday Creations</h3>
+    <div class="category-grid">
+        <div class="cake-card"><div class="card-bg" style="background-image:url('images/choco.jpg')"></div><div class="cake-title">Chocolate Truffle</div></div>
+        <div class="cake-card"><div class="card-bg" style="background-image:url('images/bento.jpg')"></div><div class="cake-title">Bento Cake</div></div>
+        <div class="cake-card"><div class="card-bg" style="background-image:url('images/custom.jpeg')"></div><div class="cake-title">Custom Theme</div></div>
+        <div class="cake-card"><div class="card-bg" style="background-image:url('images/cake12.jpg')"></div><div class="cake-title">Floral Cake</div></div>
+    </div>
+</section>
+
+<section class="cta">
+    <h3>Order Your Cake Now 🎉</h3>
+    <p>Tell us your preferences and we’ll take care of the rest.</p>
+    <button class="btn-hero" onclick="openModal()">Order Now</button>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="orderModal">
+    <div class="modal-content">
+        <h4>Order Birthday Cake 🎂</h4>
+        <input id="cake" placeholder="Cake Type (e.g. Chocolate Truffle)">
+        <select id="weight">
+            <option>0.5 Kg</option>
+            <option>1 Kg</option>
+            <option>2 Kg</option>
+        </select>
+        <input id="date" type="date">
+        <textarea id="message" rows="3" placeholder="Any message on cake?"></textarea>
+        <div class="modal-actions">
+            <button class="send-btn" onclick="sendWhatsApp()">Send</button>
+            <button class="close-btn" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <span>© New To Kitchen</span>
+    <div class="socials">
+        <a href="https://www.instagram.com/newtokitchen/" target="_blank" class="insta"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/people/New-To-Kitchen/100064329812401/" target="_blank" class="fb"><i class="fab fa-facebook"></i></a>
+    </div>
+</footer>
+
+<script>
+function openModal(){
+    document.getElementById('orderModal').style.display='flex';
+}
+function closeModal(){
+    document.getElementById('orderModal').style.display='none';
+}
+function sendWhatsApp(){
+    const cake=document.getElementById('cake').value;
+    const weight=document.getElementById('weight').value;
+    const date=document.getElementById('date').value;
+    const msg=document.getElementById('message').value;
+
+    const text=`Hello New To Kitchen!%0A
+Cake: ${cake}%0A
+Weight: ${weight}%0A
+Delivery Date: ${date}%0A
+Message on Cake: ${msg}`;
+
+    window.open(`https://wa.me/919450426500?text=${text}`,'_blank');
+}
+</script>
+
+</body>
+</html>
