@@ -98,7 +98,7 @@ body {
 /* ================= HERO ================= */
 .hero {
     height: 90vh;
-    background: url('hero.jpg') center/cover no-repeat;
+    background: url('images/hero.jpg') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,27 +110,18 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(2px);
+    background: rgba(0,0,0,0.45);
 }
 
-/* Confetti animation */
+/* Optional subtle confetti (lighter + safer) */
 .hero::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background-image: url('confetti.png'); /* optional confetti PNG */
+    inset: 0;
+    background-image: url('images/confetti.png');
     background-size: cover;
-    opacity: 0.15;
-    animation: rotateConfetti 20s linear infinite;
-}
-
-@keyframes rotateConfetti {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    opacity: 0.08;
+    pointer-events: none;
 }
 
 .hero-content {
@@ -143,13 +134,14 @@ body {
 .hero-content h2 {
     font-size: 3rem;
     margin-bottom: 20px;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-    color: #ff4d6d;
+    color: #fff;
+    text-shadow: 0 6px 25px rgba(0,0,0,0.6);
 }
 
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 40px;
+    opacity: 0.95;
 }
 
 .btn-hero {
@@ -160,12 +152,12 @@ body {
     border-radius: 50px;
     font-weight: 600;
     transition: 0.3s;
-    box-shadow: 0 5px 20px rgba(255,105,135,0.3);
+    box-shadow: 0 5px 20px rgba(255,105,135,0.35);
 }
 
 .btn-hero:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(255,105,135,0.5);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255,105,135,0.5);
 }
 
 /* ================= CATEGORIES ================= */
@@ -178,7 +170,6 @@ body {
     font-size: 2.5rem;
     margin-bottom: 50px;
     color: #d2691e;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
 }
 
 .category-grid {
@@ -187,19 +178,25 @@ body {
     gap: 30px;
 }
 
+/* Anchor reset */
+.category-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .category-card {
     position: relative;
     height: 300px;
     border-radius: 22px;
     overflow: hidden;
-    transition: transform 0.5s, box-shadow 0.5s;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     background: rgba(255,255,255,0.25);
     backdrop-filter: blur(8px);
 }
 
 .category-card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    transform: translateY(-10px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.25);
 }
 
 .card-bg {
@@ -207,11 +204,11 @@ body {
     inset: 0;
     background-size: cover;
     background-position: center;
-    transition: transform 0.5s;
+    transition: transform 0.5s ease;
 }
 
 .category-card:hover .card-bg {
-    transform: scale(1.1) rotate(1deg);
+    transform: scale(1.1);
     filter: brightness(1.1);
 }
 
@@ -223,7 +220,6 @@ body {
     color: #fff;
     font-size: 1.5rem;
     font-weight: 700;
-    z-index: 2;
     text-shadow: 0 5px 15px rgba(0,0,0,0.6);
 }
 
@@ -257,8 +253,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
     color: #fff;
 }
 
@@ -266,14 +260,12 @@ body {
     font-size: 1.5rem;
     margin-left: 20px;
     text-decoration: none;
-    transition: 0.3s;
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
-.socials .insta { color: #E1306C; }
-.socials .fb { color: #1877F2; }
-
 .socials a:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -283,4 +275,3 @@ body {
     .nav { margin-top: 10px; }
     .category-card { height: 250px; }
 }
-
