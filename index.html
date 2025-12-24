@@ -2,8 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Mobile & SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="New To Kitchen – Handcrafted cakes made with love for birthdays, anniversaries & special celebrations.">
+    <meta name="keywords" content="cakes, bakery, bento cakes, birthday cakes, custom cakes">
+
     <title>New To Kitchen | The Baking House</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Google Fonts -->
@@ -18,7 +25,7 @@
 <!-- ================= HEADER ================= -->
 <header class="header fade-down">
     <div class="brand">
-        <img src="logo.jpg" alt="New To Kitchen Logo" class="logo">
+        <img src="images/logo.jpg" alt="New To Kitchen Logo" class="logo" loading="lazy">
         <div class="brand-text">
             <h1>New To Kitchen</h1>
             <p>The Baking House</p>
@@ -33,8 +40,10 @@
     </nav>
 </header>
 
+<main>
+
 <!-- ================= HERO ================= -->
-<section class="hero fade-up">
+<section class="hero fade-up" aria-label="Hero section">
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
@@ -50,27 +59,33 @@
 
     <div class="category-grid">
 
-        <div class="category-card">
-            <div class="card-bg" style="background-image:url('bento-cake.jpg');"></div>
-            <span>Bento Cakes</span>
-        </div>
+        <a href="bento-cakes.html" class="category-link">
+            <div class="category-card">
+                <div class="card-bg" style="background-image:url('images/bento-cake.jpg');"></div>
+                <span>Bento Cakes</span>
+            </div>
+        </a>
 
         <a href="birthday-cakes.html" class="category-link">
             <div class="category-card">
-                <div class="card-bg" style="background-image:url('birthday-cake.jpg');"></div>
+                <div class="card-bg" style="background-image:url('images/birthday-cake.jpg');"></div>
                 <span>Birthday Cakes</span>
             </div>
         </a>
 
-        <div class="category-card">
-            <div class="card-bg" style="background-image:url('anniversary-cake.jpg');"></div>
-            <span>Anniversary Cakes</span>
-        </div>
+        <a href="anniversary-cakes.html" class="category-link">
+            <div class="category-card">
+                <div class="card-bg" style="background-image:url('images/anniversary-cake.jpg');"></div>
+                <span>Anniversary Cakes</span>
+            </div>
+        </a>
 
-        <div class="category-card">
-            <div class="card-bg" style="background-image:url('custom-cake.jpg');"></div>
-            <span>Custom Cakes</span>
-        </div>
+        <a href="custom-cakes.html" class="category-link">
+            <div class="category-card">
+                <div class="card-bg" style="background-image:url('images/custom-cake.jpg');"></div>
+                <span>Custom Cakes</span>
+            </div>
+        </a>
 
     </div>
 </section>
@@ -80,21 +95,24 @@
     <div class="about-container">
         <h3>About Us</h3>
         <p>
-            At New To Kitchen, we specialize in handcrafted cakes made using
+            At <strong>New To Kitchen</strong>, we create handcrafted cakes using
             premium ingredients, ensuring every celebration tastes as special
             as it feels.
         </p>
     </div>
 </section>
 
+</main>
+
 <!-- ================= FOOTER ================= -->
-<footer class="footer">
-    <span>© New To Kitchen</span>
+<footer class="footer" id="contact">
+    <span>© 2025 New To Kitchen</span>
+
     <div class="socials">
-        <a href="https://www.instagram.com/newtokitchen/" target="_blank" class="insta">
+        <a href="https://www.instagram.com/newtokitchen/" target="_blank" aria-label="Instagram">
             <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://www.facebook.com/people/New-To-Kitchen/100064329812401/" target="_blank" class="fb">
+        <a href="https://www.facebook.com/people/New-To-Kitchen/100064329812401/" target="_blank" aria-label="Facebook">
             <i class="fab fa-facebook"></i>
         </a>
     </div>
@@ -102,4 +120,3 @@
 
 </body>
 </html>
-
