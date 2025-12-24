@@ -1,123 +1,277 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+html {
+    scroll-behavior: smooth;
+}
 
-    <!-- Mobile & SEO -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="New To Kitchen – Handcrafted cakes made with love for birthdays, anniversaries & special celebrations.">
-    <meta name="keywords" content="cakes, bakery, bento cakes, birthday cakes, custom cakes">
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <title>New To Kitchen | The Baking House</title>
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background: #fff8f2;
+}
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+/* ================= ANIMATIONS ================= */
+.fade-up {
+    animation: fadeUp 1s ease forwards;
+}
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+.fade-down {
+    animation: fadeDown 1s ease forwards;
+}
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-<body>
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-<!-- ================= HEADER ================= -->
-<header class="header fade-down">
-    <div class="brand">
-        <img src="logo.jpg" alt="New To Kitchen Logo" class="logo" loading="lazy">
-        <div class="brand-text">
-            <h1>New To Kitchen</h1>
-            <p>The Baking House</p>
-        </div>
-    </div>
+/* ================= HEADER ================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 5%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
 
-    <nav class="nav">
-        <a href="#">Home</a>
-        <a href="#categories">Cakes</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
 
-<main>
+.logo {
+    height: 65px;
+    border-radius: 50%;
+}
 
-<!-- ================= HERO ================= -->
-<section class="hero fade-up" aria-label="Hero section">
-    <div class="hero-overlay"></div>
+.brand-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #d2691e;
+}
 
-    <div class="hero-content">
-        <h2>Handcrafted Cakes for Every Celebration</h2>
-        <p>Made with love • Designed with passion</p>
-        <a href="#categories" class="btn-hero">Explore Cakes</a>
-    </div>
-</section>
+.brand-text p {
+    font-size: 0.85rem;
+    color: #777;
+    letter-spacing: 0.5px;
+}
 
-<!-- ================= CATEGORIES ================= -->
-<section id="categories" class="categories fade-up">
-    <h3>Our Cake Collections</h3>
+/* NAV */
+.nav a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+}
 
-    <div class="category-grid">
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d2691e;
+    transition: 0.3s;
+}
 
-        <a href="bento-cakes.html" class="category-link">
-            <div class="category-card">
-                <div class="card-bg" style="background-image:url('bento-cake.jpg');"></div>
-                <span>Bento Cakes</span>
-            </div>
-        </a>
+.nav a:hover::after {
+    width: 100%;
+}
 
-        <a href="birthday-cakes.html" class="category-link">
-            <div class="category-card">
-                <div class="card-bg" style="background-image:url('birthday-cake.jpg');"></div>
-                <span>Birthday Cakes</span>
-            </div>
-        </a>
+/* ================= HERO ================= */
+.hero {
+    height: 90vh;
+    background: url('hero.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
 
-        <a href="anniversary-cakes.html" class="category-link">
-            <div class="category-card">
-                <div class="card-bg" style="background-image:url('anniversary-cake.jpg');"></div>
-                <span>Anniversary Cakes</span>
-            </div>
-        </a>
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+}
 
-        <a href="custom-cakes.html" class="category-link">
-            <div class="category-card">
-                <div class="card-bg" style="background-image:url('custom-cake.jpg');"></div>
-                <span>Custom Cakes</span>
-            </div>
-        </a>
+/* Optional subtle confetti (lighter + safer) */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('confetti.png');
+    background-size: cover;
+    opacity: 0.08;
+    pointer-events: none;
+}
 
-    </div>
-</section>
+.hero-content {
+    position: relative;
+    color: #fff;
+    max-width: 750px;
+    z-index: 2;
+}
 
-<!-- ================= ABOUT ================= -->
-<section id="about" class="about fade-up">
-    <div class="about-container">
-        <h3>About Us</h3>
-        <p>
-            At <strong>New To Kitchen</strong>, we create handcrafted cakes using
-            premium ingredients, ensuring every celebration tastes as special
-            as it feels.
-        </p>
-    </div>
-</section>
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 6px 25px rgba(0,0,0,0.6);
+}
 
-</main>
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.95;
+}
 
-<!-- ================= FOOTER ================= -->
-<footer class="footer" id="contact">
-    <span>© 2025 New To Kitchen</span>
+.btn-hero {
+    padding: 14px 36px;
+    background: linear-gradient(45deg, #ff6b81, #d2691e);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 5px 20px rgba(255,105,135,0.35);
+}
 
-    <div class="socials">
-        <a href="https://www.instagram.com/newtokitchen/" target="_blank" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.facebook.com/people/New-To-Kitchen/100064329812401/" target="_blank" aria-label="Facebook">
-            <i class="fab fa-facebook"></i>
-        </a>
-    </div>
-</footer>
+.btn-hero:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255,105,135,0.5);
+}
 
-</body>
-</html>
+/* ================= CATEGORIES ================= */
+.categories {
+    padding: 90px 6%;
+    text-align: center;
+}
 
+.categories h3 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #d2691e;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 30px;
+}
+
+/* Anchor reset */
+.category-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.category-card {
+    position: relative;
+    height: 300px;
+    border-radius: 22px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(8px);
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.25);
+}
+
+.card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.category-card:hover .card-bg {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.category-card span {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.6);
+}
+
+/* ================= ABOUT ================= */
+.about {
+    padding: 90px 6%;
+    text-align: center;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.about h3 {
+    font-size: 2.2rem;
+    color: #d2691e;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: #111;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.socials a {
+    font-size: 1.5rem;
+    margin-left: 20px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.socials a:hover {
+    transform: scale(1.15);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .hero-content h2 { font-size: 2.2rem; }
+    .header { flex-direction: column; }
+    .nav { margin-top: 10px; }
+    .category-card { height: 250px; }
+}
